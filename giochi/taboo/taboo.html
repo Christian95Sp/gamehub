@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Taboo</title>
+
+    <link rel="stylesheet" href="taboo_style.css">
+    <link rel="stylesheet" href="../giochi_style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Schermata di Avvio -->
+    <div id="start-screen" class="screen active">
+        <div class="start-container">
+            <h1>Taboo</h1>
+            <p>Seleziona il numero di squadre</p>
+            <div class="team-selection">
+                <button class="team-choice-btn" data-teams="2">2 Squadre</button>
+                <button class="team-choice-btn" data-teams="3">3 Squadre</button>
+                <button class="team-choice-btn" data-teams="4">4 Squadre</button>
+            </div>
+            <button id="start-game-btn" class="start-button" disabled>Inizia</button>
+        </div>
+    </div>
+
+    <!-- Schermata di Gioco -->
+    <div id="game-screen" class="screen">
+        <div class="game-grid">
+
+            <!-- Timer a Sinistra -->
+            <div id="timer-area" class="game-area">
+                <div class="timer-container">
+                    <div id="time-left" class="timer-display">90</div>
+                    <!-- Nuovo pulsante Pausa/Play -->
+                    <button id="pause-toggle-btn" class="pause-btn">
+                        <span class="icon">❚❚</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carta Centrale -->
+            <div id="card-area" class="game-area">
+                <div class="team-display" id="current-team-display">SQUADRA</div>
+                <div class="card">
+                    <h2 id="guess-word">Parola</h2>
+                    <ul id="forbidden-words">
+                        <!-- Riempito da JS -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Punteggio a Destra -->
+            <div id="scoreboard-area" class="game-area">
+                <h3>Punteggio</h3>
+                <ul id="scoreboard">
+                    <!-- Riempito da JS -->
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Pulsanti di Azione in Basso  -->
+        <div class="action-buttons">
+            <button id="pass-button" class="action-btn pass">PASSO <span id="pass-counter">(3)</span></button>
+            <button id="correct-button" class="action-btn correct">INDOVINATA</button>
+        </div>
+        <div class="action-buttons-bottom">
+            <button id="taboo-button" class="action-btn taboo">TABOO</button>
+        </div>
+    </div>
+
+    <!-- Schermata Intermedia di Pausa Turno -->
+    <div id="pause-screen" class="screen">
+        <div class="start-container">
+            <h2>Turno Finito!</h2>
+            <p>Passa il telefono alla squadra successiva:</p>
+            <div class="team-display" id="next-team-title"
+                style="border-radius: 15px; margin-bottom: 25px; padding: 15px; text-align: center; color: white; font-weight: bold; font-size: 1.5em; border: 3px solid;">
+                SQUADRA</div>
+            <button id="ready-btn" class="start-button">Sono Pronto, Avvia!</button>
+        </div>
+    </div>
+
+    <script src="taboo_script.js"></script>
+</body>
+
+</html>

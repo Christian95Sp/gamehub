@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Obbligo o Verità</title>
+
+    <link rel="stylesheet" href="obbligo_o_verita_style.css">
+    <link rel="stylesheet" href="../giochi_style.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!--<div class="game-container"> -->
+
+
+    <div class="app">
+
+        <div id="setup">
+            <h1>🔥 Obbligo o Verità</h1>
+            <div class="sub">Gioco da party avanzato</div>
+
+            <div class="setup">
+                <input id="names" placeholder="Nomi giocatori (separati da ,)">
+                <select id="mode">
+                    <option value="family">Modalità Family</option>
+                    <option value="hot">Modalità 18+</option>
+                </select>
+                <button class="start" onclick="startGame()">Inizia il gioco</button>
+            </div>
+        </div>
+
+        <div id="game" class="hidden">
+            <div class="player">
+                Turno di <span id="player"></span>
+            </div>
+
+            <div class="buttons">
+                <button class="truth" onclick="truth()">VERITÀ</button>
+                <button class="dare" onclick="dare()">OBBLIGO</button>
+            </div>
+
+            <div class="card" id="card">
+                Scegli Verità o Obbligo 🎲
+            </div>
+
+            <div class="timer" id="timer">⏱️ 15s</div>
+        </div>
+
+    </div>
+    <!--  -->
+
+    <!-- <footer class="game-footer">
+            <a href="../../index.html" class="btn-home">BACK TO HOME</a>
+        </footer> -->
+    <!-- </div> -->
+
+</body>
+
+<script src="obbligo_o_verita_script.js"></script>
+
+</html>

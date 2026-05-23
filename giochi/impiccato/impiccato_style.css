@@ -1,0 +1,119 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+#game {
+    text-align: center;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#hangmanCanvas {
+    border: 2px solid #333;
+    margin-bottom: 1rem;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+#wordContainer {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+}
+
+#lettersContainer button {
+    font-size: 1rem;
+    margin: 0.2rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 2px 2px #aaa;
+}
+
+#lettersContainer button:disabled {
+    background-color: #ccc;
+    color: #666;
+}
+
+button#restartBtn {
+    margin-top: 1rem;
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px #aaa;
+}
+
+button#restartBtn:hover {
+    background-color: #555;
+}
+
+button#shareBtn {
+    margin-top: 1rem;
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #1da1f2;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px #aaa;
+}
+
+button#shareBtn:hover {
+    background-color: #0d95e8;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#winner {
+    animation: blink 1s infinite;
+    color: #4caf50;
+}
+
+#loser {
+    animation: blink 1s infinite;
+    color: #f44336;
+}

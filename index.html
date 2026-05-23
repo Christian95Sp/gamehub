@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Hub Futuristico V4</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- cursor traker -->
+    <link rel="stylesheet" href="cursor-trakking/cursor-trakking.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <h2>Caricamento Gioco...</h2>
+    </div>
+
+    <!-- cursor- trakking -->
+    <div id="app">
+        <canvas id="canvas"></canvas>
+        <div class="hero">
+            <!-- *** -->
+
+            <h1 class="futuristic-title">SFIDA I TUOI AMICI</h1>
+
+            <div class="carousel-container">
+                <div class="carousel" id="game-carousel">
+
+                    <!-- scacchi -->
+                    <div class="card" data-game="scacchi" data-link="./giochi/scacchi/scacchi.html"
+                        style="--card-color: #00bcd4;">
+                        <div class="card-image" style="background-image: url('./img/scacchi.jpg');"></div>
+                        <!-- <div class="card-image"
+                            style="background-image: url('https://picsum.photos/400/600?random=1');"></div> -->
+                        <div class="card-title">Scacchi</div>
+                    </div>
+
+                    <!-- dama -->
+                    <div class="card active" data-game="dama" data-link="./giochi/dama/dama.html"
+                        style="--card-color: #ff3399;">
+                        <div class="card-image" style="background-image: url('./img/dama.jpg');"></div>
+                        <!-- <div class="card-image"
+                            style="background-image: url('https://picsum.photos/400/600?random=2&_r=1&seed=2&_c=1');">
+                        </div> -->
+                        <div class="card-title">Dama</div>
+                    </div>
+
+                    <!-- tris -->
+                    <div class="card" data-game="tris" data-link="./giochi/super_tris/super_tris.html"
+                        style="--card-color: #ffd700;">
+                        <div class="card-image" style="background-image: url('./img/supertris1.png');">
+                        </div>
+                        <!-- <div class="card-image"
+                            style="background-image: url('https://picsum.photos/400/600?random=5&_r=1&seed=5&_c=1');">
+                        </div> -->
+                        <div class="card-title">Super Tris</div>
+                    </div>
+
+
+                    <!-- solitatio -->
+                    <div class="card" data-game="tris" data-link="./giochi/solitario/solitario.html"
+                        style="--card-color: #00ffff;">
+                        <div class="card-image" style="background-image: url('./img/solitario.jpg');">
+                        </div>
+                        <!-- <div class="card-image"
+                    style="background-image: url('https://picsum.photos/400/600?random=5&_r=1&seed=5&_c=1');">
+                </div> -->
+                        <div class="card-title">Solitario</div>
+                    </div>
+
+                    <!-- Gioco dell'Impiccato -->
+                    <div class="card" data-game="impiccato" data-link="./giochi/impiccato/impiccato.html"
+                        style="--card-color: #00ff99;">
+                        <div class="card-image" style="background-image: url('./img/impiccato.jpg');">
+                        </div>
+                        <!-- <div class="card-image"
+                    style="background-image: url('https://picsum.photos/400/600?random=3&_r=1&seed=3&_c=1');">
+                </div> -->
+                        <div class="card-title">Gioco dell'Impiccato</div>
+                    </div>
+
+                    <!-- Gioco dell'Impostore -->
+                    <div class="card" data-game="impostore" data-link="./giochi/impostore/impostore.html"
+                        style="--card-color: #ff7214;">
+                        <div class="card-image" style="background-image: url('./img/impostore.webp');">
+                        </div> <!-- './img/impostore+.png' -->
+                        <div class="card-title">Trova l'Impostore</div>
+                    </div>
+
+                    <!-- obbligo_o_verita -->
+                    <div class="card active" data-game="dama"
+                        data-link="./giochi/obbligo_o_verita/obbligo_o_verita.html" style="--card-color: #ff3399;">
+                        <div class="card-image" style="background-image: url('./img/obbligo_o_verita.png');"></div>
+                        <!-- <div class="card-image"
+                            style="background-image: url('https://picsum.photos/400/600?random=2&_r=1&seed=2&_c=1');">
+                        </div> -->
+                        <div class="card-title">Obbligo o Verità</div>
+                    </div>
+
+                    <!-- taboo -->
+                    <div class="card" data-game="tris" data-link="./giochi/taboo/taboo.html"
+                        style="--card-color: #ffd700;">
+                        <div class="card-image" style="background-image: url('./img/taboo.png');">
+                        </div>
+                        <!-- <div class="card-image"
+                            style="background-image: url('https://picsum.photos/400/600?random=5&_r=1&seed=5&_c=1');">
+                        </div> -->
+                        <div class="card-title">Taboo</div>
+                    </div>
+
+                    <!-- <div class="card" data-game="ruota" style="--card-color: #00ff99;">
+                        <div class="card-image"
+                            style="background-image: url('https://picsum.photos/400/600?random=4&_r=1&seed=4&_c=1');">
+                        </div>
+                        <div class="card-title">Ruota della Fortuna</div>
+                    </div>
+
+                    <div class="card" data-game="nuovo gioco 1" style="--card-color: #ff0000;">
+                        <div class="card-image"
+                            style="background-image: url('https://picsum.photos/400/600?random=5&_r=1&seed=5&_c=1');">
+                        </div>
+                        <div class="card-title">nuovo gioco 1</div>
+                    </div>
+
+                    <div class="card" data-game="nuovo gioco 2" style="--card-color: #8a2be2;">
+                        <div class="card-image"
+                            style="background-image: url('https://picsum.photos/400/600?random=6&_r=1&seed=6&_c=1');">
+                        </div>
+                        <div class="card-title">nuovo gioco 2</div>
+                    </div> -->
+
+                </div>
+            </div>
+
+            <p class="info-text">*Tocca o clicca per scorrere. Tieni premuto o attendi per selezionare la card attiva*
+            </p>
+            <!-- *** -->
+
+
+
+        </div>
+    </div>
+
+
+</body>
+<script src="script.js"></script>
+<!-- cursor traker -->
+<script type="module" src="cursor-trakking/cursor-trakking.js"></script>
+
+</html>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->

@@ -1,0 +1,120 @@
+/* Variabili globali per gestire facilmente i colori dell'interfaccia */
+:root {
+  --bg: #0b0b16;
+  --card: #15152a;
+  --accent: #7c4dff;
+  --truth: #00e676;
+  --dare: #ff5252;
+  --text: #fff;
+}
+
+/* Reset base per tutti gli elementi e impostazione del font */
+* {
+  box-sizing: border-box;
+  font-family: system-ui, Segoe UI, sans-serif;
+}
+
+/* Centra il contenuto al centro dello schermo sia in verticale che in orizzontale */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1b1b3a, var(--bg));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+}
+
+/* Contenitore principale dell'app */
+.app {
+  width: 100%; /* Modifica per la responsività */
+  max-width: 390px; /* Limite massimo di larghezza per tablet e PC */
+  background: var(--card);
+  border-radius: 26px;
+  padding: 22px;
+  box-shadow: 0 35px 90px rgba(0,0,0,.75);
+  animation: fade .5s ease;
+}
+
+/* Animazione di entrata dal basso verso l'alto */
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+h1 { text-align: center; margin: 0; font-size: 24px; }
+.sub { text-align: center; font-size: 13px; opacity: .7; margin-bottom: 12px; }
+
+/* Stile per i campi di input e selezione */
+.setup input, select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 8px;
+  background: #0e0e1f;
+  color: #fff;
+}
+
+/* Stile base per tutti i bottoni */
+button {
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .15s;
+}
+
+/* Effetto di pressione quando si clicca un bottone */
+button:active { transform: scale(.96); }
+
+.start { background: var(--accent); color: #fff; width: 100%; }
+
+/* Riquadro che indica di chi è il turno */
+.player {
+  background: #0e0e1f;
+  padding: 10px;
+  border-radius: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.player span { color: var(--accent); font-weight: 700; }
+
+/* Disposizione affiancata (griglia a 2 colonne) per i bottoni Verità/Obbligo */
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.truth { background: var(--truth); color: #000; }
+.dare { background: var(--dare); color: #000; }
+
+/* Riquadro in cui compare la frase estratta */
+.card {
+  background: #0b0b1a;
+  border-radius: 18px;
+  padding: 18px;
+  min-height: 120px;
+  text-align: center;
+  animation: pop .3s ease;
+}
+
+/* Animazione a "scatto" per la comparsa della carta */
+@keyframes pop {
+  from { opacity: 0; transform: scale(.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.timer {
+  text-align: center;
+  font-size: 13px;
+  opacity: .7;
+  margin-top: 8px;
+}
+
+/* Classe di utilità per nascondere gli elementi (usata dal JS) */
+.hidden { display: none; }

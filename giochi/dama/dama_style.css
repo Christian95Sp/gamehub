@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --cyan: #00f2ff;
+    --purple: #bc13fe;
+    --dark-bg: #0d0d0d;
+    --panel-bg: #1a1a1a;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: #e0e0e0;
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* body{
+background-color: #b83939;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Verdana', sans-serif;
+} */
+
+/* Titolo Neon */
+.neon-title {
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: var(--purple);
+    margin-bottom: 20px;
+}
+
+/* Pulsanti stile Cyberpunk */
+.btn-neon,
+.btn-home {
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    padding: 10px 20px;
+    font-family: 'Michroma', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+    margin: 5px;
+}
+
+.btn-neon:hover,
+.btn-home:hover {
+    background: var(--cyan);
+    color: black;
+    box-shadow: 0 0 20px var(--cyan);
+}
+
+.game-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* gioco--------------------------------------  */
+
+.game-container {
+    width: 100%;
+    max-width: 500px;
+    /* Larghezza massima su PC */
+    margin: 0 auto;
+}
+
+#playModeDiv {
+    text-align: center;
+    margin: 20px 0 0;
+}
+
+/* Scacchiera Responsive */
+/* bordo */
+#boardDiv {
+    width: 95%;
+    /* Quasi tutta la larghezza su mobile */
+    max-width: 480px;
+    /* Non più grande di così su PC */
+    aspect-ratio: 1 / 1;
+    /* Forza la scacchiera a rimanere quadrata */
+    margin: 20px auto;
+    /* border: 5px solid #000;
+    background-color: beige; */
+    display: flex;
+    flex-direction: column;
+    border: 3px solid var(--purple);
+    box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
+    background: #000;
+}
+
+.draughtsRow {
+    display: flex;
+    flex: 1;
+    /* Ogni riga occupa 1/8 dell'altezza */
+}
+
+/* celle colorate */
+.draughtsRow:nth-child(odd) .draughtsSquare:nth-child(even),
+.draughtsRow:nth-child(even) .draughtsSquare:nth-child(odd) {
+    /* background-color: rgb(175, 132, 67); */
+    background-color: #555;
+}
+
+/* celle bianche */
+.draughtsSquare {
+    flex: 1;
+    /* Ogni cella occupa 1/8 della larghezza */
+    aspect-ratio: 1 / 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #111;
+    /* Celle scure */
+}
+
+.draughtsSquare.clickable {
+    box-shadow: inset 0 0 5px 4px yellow;
+}
+
+.draughtsSquare.aiOption {
+    box-shadow: inset 0 0 5px 4px #99f;
+}
+
+/* Pedine Responsive */
+.draughtsPiece {
+    width: 80%;
+    /* Si adatta alla dimensione della cella */
+    height: 80%;
+    border-radius: 50%;
+    border: 3px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(12px, 5vw, 24px);
+    /* Font scalabile */
+    transition: all 0.3s;
+}
+
+.draughtsPiece.w,
+.draughtsPiece.W {
+    /* border-color: #ffffff;
+    background: linear-gradient(#ffe, #ccb); */
+    border-color: var(--cyan);
+    background: radial-gradient(circle, #004444, #000);
+    box-shadow: 0 0 10px var(--cyan);
+}
+
+.draughtsPiece.b,
+.draughtsPiece.B {
+    /* border-color: #000000;
+    background: linear-gradient(black, #444);
+    color: white; */
+    border-color: var(--purple);
+    background: radial-gradient(circle, #440044, #000);
+    box-shadow: 0 0 10px var(--purple);
+}
+
+.draughtsPiece.selected {
+    border-color: red;
+}
+
+/* Footer e Opzioni */
+
+/* Pulsanti e Info */
+#infoDiv {
+    font-size: clamp(18px, 6vw, 28px);
+    text-align: center;
+    /* color: white; */
+    margin: 15px 0;
+
+    color: var(--cyan);
+    height: 40px;
+}
+
+
+/* bottone ai */
+.playModeButton {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.selectedPlayMode {
+    /* background: #090; */
+
+    background: var(--purple) !important;
+    border-color: var(--purple) !important;
+    color: white !important;
+    box-shadow: 0 0 15px var(--purple);
+}
+
+#optionsDiv {
+    /*     color: white;
+    font-size: 14px;
+    text-align: center; */
+
+    background: var(--panel-bg);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    border-left: 4px solid var(--purple);
+}
+
+#colourModeDiv {
+    margin-top: 20px;
+}
+
+/* #note {
+    font-size: 15px;
+    color: #666;
+    text-align: center;
+    margin-top: 30px;
+} */
+
+
+/* Media Query per schermi molto piccoli */
+@media (max-width: 400px) {
+    .playModeButton {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}
+
+
+
+
+/* bottone ai */
+/* .playModeButton {
+    padding: 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    border: 2px solid #566;
+    background: linear-gradient(#666, #333);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 3px 3px 4px 4px black;
+    vertical-align: top;
+} */
+
+/* bottone 2p */
+/* .selectedPlayMode {
+    background: linear-gradient(#090, #050);
+} */
+
+/* #infoDiv {
+    text-align: center;
+    font-family: Verdana, sans-serif;
+    font-size: 30px;
+    margin: 30px 0;
+}
+ */
+
+/* celle bianche */
+/* .draughtsSquare {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    vertical-align: top;
+    background-color: beige;
+} */
+
+/* celle colorate */
+/* .draughtsRow:nth-child(odd) .draughtsSquare:nth-child(even),
+.draughtsRow:nth-child(even) .draughtsSquare:nth-child(odd) {
+    background-color: rgb(175, 132, 67);
+}
+
+.draughtsSquare.clickable {
+    box-shadow: inset 0 0 5px 4px yellow;
+}
+
+.draughtsSquare.aiOption {
+    box-shadow: inset 0 0 5px 4px #99f;
+} */
+
+/* .draughtsPiece {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 30px;
+    border-width: 4px;
+    border-style: solid;
+    margin: 6px;
+    border-radius: 50%;
+} */
+
+/* .draughtsPiece.w,
+.draughtsPiece.W {
+    border-color: #ffffff;
+    background: linear-gradient(#ffe, #ccb);
+}
+
+.draughtsPiece.b,
+.draughtsPiece.B {
+    border-color: #000000;
+    background: linear-gradient(black, #444);
+    color: white;
+}
+
+.draughtsPiece.selected {
+    border-color: red;
+} */
+/* 
+#optionsDiv {
+    width: 500px;
+    margin: 0 auto;
+    font-family: Verdana, sans-serif;
+    font-size: 18px;
+} */
+
+/* #colourModeDiv {
+    margin-top: 20px;
+}
+
+#note {
+    font-size: 15px;
+    color: #666;
+    text-align: center;
+    margin-top: 30px;
+}
+ */
+
+
+/* Wrapper che crea la cornice interattiva */
+.board-wrapper {
+    width: 95%; /* Segue la larghezza della scacchiera */
+    max-width: 500px; /* Un po' più grande del max-width di boardDiv (480px) */
+    margin: 20px auto;
+    padding: 15px; /* Questo determina lo SPESSORE della cornice */
+    border-radius: 15px;
+    display: grid;
+    place-items: center; /* Centra la scacchiera perfettamente */
+    transition: all 0.4s ease;
+    box-sizing: border-box; /* Fondamentale per il calcolo delle dimensioni */
+}
+
+/* Rimuovi il margine dal boardDiv originale per evitare conflitti */
+#boardDiv {
+    margin: 0 !important; 
+    width: 100% !important;
+}
+
+/* Colore Viola */
+.turn-viola {
+    background-color: rgba(188, 19, 254, 0.2); /* Sfondo tenue */
+    box-shadow: 0 0 25px 5px var(--purple); /* Bagliore esterno */
+    border: 2px solid var(--purple);
+}
+
+/* Colore Azzurro */
+.turn-azzurro {
+    background-color: rgba(0, 242, 255, 0.2);
+    box-shadow: 0 0 25px 5px var(--cyan);
+    border: 2px solid var(--cyan);
+}
+
+/* Effetto Vittoria */
+.victory-glow {
+    border: 4px solid transparent;
+    background: linear-gradient(#000, #000) padding-box,
+                conic-gradient(from 0deg, red, yellow, lime, cyan, blue, magenta, red) border-box;
+    animation: rotateGlow 3s linear infinite;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes rotateGlow {
+    100% { filter: hue-rotate(360deg); }
+}

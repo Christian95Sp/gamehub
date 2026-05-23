@@ -1,0 +1,368 @@
+:root {
+  --bg: #05080a;
+  --card: #161a22;
+  --accent: #7e3ff2;
+  --green: #24d17b;
+  --red: #ff3b30;
+  --blue: #007aff;
+  --yellow: #ffcc00;
+  --text: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* --- Views --- */
+.view {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.active {
+  display: flex;
+}
+
+.reveal-bg {
+  background: var(--accent);
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Blocks & UI --- */
+.block {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 15px;
+  margin-bottom: 12px;
+  border: 1px solid #242933;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.clickable-row {
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.column-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.counter-group {
+  display: flex;
+  align-items: center;
+  background: #2c313c;
+  border-radius: 30px;
+  padding: 5px 15px;
+  gap: 10px;
+}
+
+.counter-val {
+  min-width: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* --- Buttons --- */
+.btn-main {
+  width: 100%;
+  padding: 18px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-bottom: 10px;
+}
+
+.btn-green {
+  background: var(--green);
+  color: black;
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-white {
+  background: white;
+  color: black;
+  visibility: hidden;
+  margin-top: 20px;
+}
+
+.btn-transparent {
+  background: transparent;
+  color: white;
+}
+
+.btn-tech {
+  background-color: #3498db !important;
+  color: white;
+  text-transform: uppercase;
+}
+
+.btn-base {
+  background-color: #e67e22 !important;
+  color: white;
+  text-transform: uppercase;
+}
+
+.btn-history {
+  background-color:  #2d84be !important;
+  color: white;
+  text-transform: uppercase;
+}
+
+.circle-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+}
+
+#btn-universal-home {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background-color: #2ecc71;
+  color: #ffffff;
+  border: none;
+  min-width: 20px;
+  height: 35px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#btn-universal-home:hover {
+  background-color: #27ae60;
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.btn-start {
+  margin-bottom: 50px;
+}
+
+/* --- Pack Grid --- */
+.pack-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.pack-card {
+  background: var(--card);
+  border-radius: 15px;
+  padding: 12px;
+  text-align: center;
+  border: 2px solid transparent;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.pack-card.selected {
+  border-color: var(--green);
+  background: #0d261a;
+}
+
+.info-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  font-size: 14px;
+  line-height: 24px;
+  z-index: 10;
+}
+
+/* --- Modals --- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 100;
+  display: none;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-scrollable {
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+#info-list,
+#names-list {
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 5px;
+}
+
+/* --- Gameplay Cards --- */
+.swipe-card {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 4/5;
+  background: white;
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+  margin: 10px auto;
+  border: 4px solid var(--accent);
+  cursor: pointer;
+}
+
+.card-inner {
+  text-align: center;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #111;
+}
+
+.swipe-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent), #4a00e0);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Control Panels --- */
+.control-panel-base {
+  display: flex;
+  gap: 12px;
+  margin: 15px 0 10px 0;
+  width: 100%;
+}
+
+.btn-range {
+  flex: 1;
+  padding: 15px 10px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.btn-select {
+  background-color: #e67e22 !important;
+  color: white;
+}
+
+.btn-deselect {
+  background-color: #5d6d7e !important;
+  color: white;
+}
+
+/* --- Forms --- */
+input,
+select {
+  background: #2c313c;
+  border: 1px solid #444;
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+/* --- Animations --- */
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.anim-pop {
+  animation: popIn 0.8s cubic-bezier(0.17, 0.89, 0.32, 1.49) forwards;
+}
+
+.confetti-bg {
+  background-image: radial-gradient(#24d17b 15%, transparent 16%), radial-gradient(#7e3ff2 15%, transparent 16%);
+  background-size: 60px 60px;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.2;
+  animation: confetti 4s linear infinite;
+}
+
+@keyframes confetti {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 0 600px;
+  }
+}

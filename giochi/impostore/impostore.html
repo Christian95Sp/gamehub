@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Impostore</title>
+
+    <link rel="stylesheet" href="impostore_style.css">
+    <link rel="stylesheet" href="../giochi_style.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!--     <div class="bigcontainer"></div> -->
+
+
+    <body onload="initApp()">
+
+        <!-- Bottone Home Universale -->
+        <!-- <button id="btn-universal-home" onclick="resetToHome()">
+                Torna alla Home 🏠
+            </button> -->
+
+        <!-- Modale Vittoria -->
+        <div id="win-screen" class="modal">
+            <div class="confetti-bg"></div>
+            <div class="modal-content anim-pop win-box">
+                <div class="win-icon">🏆</div>
+                <h1 id="win-text">VITTORIA</h1>
+                <div id="win-names"></div>
+                <button class="btn-main btn-green" onclick="resetToHome()">GIOCA ANCORA</button>
+            </div>
+        </div>
+
+        <!-- Modale Info Pack -->
+        <div id="modal-pack-info" class="modal">
+            <div class="block modal-scrollable">
+                <div class="flex-row">
+                    <h3 id="info-title">Contenuto Pack</h3>
+                    <button class="circle-btn" style="background:#333;" onclick="closeModal()">✕</button>
+                </div>
+                <div id="info-list"></div>
+            </div>
+        </div>
+
+        <!-- Modale Nomi -->
+        <div id="modal-names" class="modal">
+            <div class="block modal-scrollable">
+                <h3>Nomi Giocatori</h3>
+                <div id="names-list"></div>
+                <button class="btn-main btn-green" onclick="saveNamesAndClose()">SALVA</button>
+            </div>
+        </div>
+
+        <!-- Modale Aggiungi Parola -->
+        <div id="modal-word" class="modal">
+            <div class="block">
+                <h3>Aggiungi Parola</h3>
+                <label class="label-small">Seleziona Pacchetto</label>
+                <select id="target-pack"></select>
+                <input type="text" id="cust-word" placeholder="Parola Segreta">
+                <input type="text" id="cust-hints" placeholder="Indizi (separati da virgola)">
+                <small class="hint-text">Es: Rosso, Frutto, Croccante</small>
+                <button class="btn-main btn-green" onclick="saveWord()">AGGIUNGI</button>
+                <button class="btn-main btn-transparent" onclick="closeModal()">CHIUDI</button>
+            </div>
+        </div>
+
+        <!-- Modale Guess Infiltrato -->
+        <div id="modal-guess" class="modal">
+            <div class="block">
+                <h2 class="text-red">COLPO DI CODA!</h2>
+                <p>L'Infiltrato è stato scoperto! <br>Può vincere se indovina la parola dei Civili.</p>
+                <input type="text" id="guess-input" placeholder="Qual era la parola?">
+                <button class="btn-main btn-green" onclick="submitGuess()">CONFERMA</button>
+                <button class="btn-main btn-transparent" onclick="closeGuess()">NON LA SO</button>
+            </div>
+        </div>
+
+        <!-- HOME VIEW -->
+        <section id="view-home" class="view active">
+            <h2 class="title-main">🕵️ TROVA L'IMPOSTORE</h2>
+
+            <div class="block">
+                <div class="flex-row clickable-row" onclick="openNamesModal()">
+                    <span class="column-label">
+                        <span>👥 Giocatori</span>
+                        <small class="accent-text">Tocca per i nomi ✏️</small>
+                    </span>
+                    <div class="counter-group">
+                        <button class="circle-btn" onclick="event.stopPropagation(); adjP(-1)">-</button>
+                        <span id="p-val" class="counter-val">3</span>
+                        <button class="circle-btn" onclick="event.stopPropagation(); adjP(1)">+</button>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <span>👺 Impostori</span>
+                    <div class="counter-group">
+                        <button class="circle-btn" onclick="adjI(-1)">-</button>
+                        <span id="i-val" class="counter-val">1</span>
+                        <button class="circle-btn" onclick="adjI(1)">+</button>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <span>⚪ Mr. Bianco</span>
+                    <div class="counter-group">
+                        <button class="circle-btn" onclick="adjW(-1)">-</button>
+                        <span id="w-val" class="counter-val">0</span>
+                        <button class="circle-btn" onclick="adjW(1)">+</button>
+                    </div>
+                </div>
+
+                <button class="btn-main btn-accent" onclick="openWordCreator()">✍️ AGGIUNGI</button>
+
+                <div class="control-panel-base">
+                    <button type="button" class="btn-range btn-select" onclick="forceToggleRange(true)">
+                        ✅ SELEZIONA TUTTI
+                    </button>
+                    <button type="button" class="btn-range btn-deselect" onclick="forceToggleRange(false)">
+                        ❌ DESELEZIONA TUTTI
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Select Buttons -->
+            <!-- <button type="button" class="btn-main btn-tech" onclick="attivaPacchettiTecnici()">
+                💡🔌 ELETTROTECNICA
+            </button> -->
+            <button type="button" class="btn-main btn-base" onclick="attivaPacchettiBase()">
+                🎼👩🏻‍🌾 BASE
+            </button>
+            <button type="button" class="btn-main btn-history" onclick="attivaPacchettiStoria()">
+                ⚔️ 2WW
+            </button>
+
+            <div id="pack-grid" class="pack-grid"></div>
+            <button class="btn-main btn-green btn-start" onclick="startGame()">INIZIA PARTITA</button>
+        </section>
+
+        <!-- REVEAL VIEW -->
+        <section id="view-reveal" class="view reveal-bg">
+            <h2 id="rev-name"></h2>
+            <div id="main-card" class="swipe-card" onclick="doSwipe()">
+                <div class="card-inner">
+                    <div id="rev-role-box"></div>
+                    <h1 id="rev-word"></h1>
+                    <div id="rev-hint"></div>
+                </div>
+                <div id="swipe-layer" class="swipe-overlay"><b>TOCCA PER VEDERE</b></div>
+            </div>
+            <button id="btn-pass" class="btn-main btn-white" onclick="confirmNext()">OK, PROSSIMO</button>
+        </section>
+
+        <!-- VOTE VIEW -->
+        <section id="view-vote" class="view">
+            <div id="turn-box" class="block turn-indicator"></div>
+            <div class="block vote-title">VOTAZIONE</div>
+            <div id="vote-grid"></div>
+
+
+            <!-- AGGIUNGI QUESTO BLOCCO QUI SOTTO -->
+    <div id="reveal-section" style="margin-top: 20px;">
+        <button class="btn-main btn-accent" onclick="revealImpostors()">🕵️ RIVELA RUOLI FINALI</button>
+        <div id="reveal-result" class="block" style="display:none; background: #2c313c; border: 2px solid var(--accent);"></div>
+    </div>
+        </section>
+
+        <!-- ------------------------------- -->
+
+        <!-- <footer class="game-footer">
+                <a href="../../index.html" class="btn-home">BACK TO HOME</a>
+            </footer> -->
+        </div>
+
+    </body>
+    <script src="impostore_script.js"></script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dama</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./dama_style.css">
+  <link rel="stylesheet" href="../giochi_style.css">
+
+  <!-- FONTS -->
+  <!-- poppins -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@400;600&display=swap" rel="stylesheet"> -->
+</head>
+
+<body>
+
+  <div class="game-container">
+
+    <header>
+      <h1 class="neon-title">DAMA</h1>
+    </header>
+
+    <div id="playModeDiv">
+      <button id="button2player" class="btn-neon" onclick="setPlayMode(2)">1 vs 1</button>
+      <button id="button1player" class="btn-neon" onclick="setPlayMode(1)">1 vs Ai</button>
+    </div>
+
+    <div id="infoDiv">Attendere...</div>
+    <div class="board-wrapper" id="wrapper">
+    <div id="boardDiv"></div>
+</div>
+
+<!--     <div id="infoDiv">Attendere...</div>
+    <div id="boardDiv"></div> -->
+    <div id="optionsDiv">
+      <label><input type="checkbox" onclick="toggleHighlight()" checked> suggerimento mosse</label>
+      <div id="colourModeDiv">
+        AI colour:<br>
+        <input type="radio" name="aiColourOptions" onclick="setColourMode('random')" checked> casuale<br>
+        <input type="radio" name="aiColourOptions" onclick="setColourMode('B')"> viola (muovono per primi)<br>
+        <input type="radio" name="aiColourOptions" onclick="setColourMode('W')"> azzurri (muovono per secondi)<br>
+      </div>
+    </div>
+    <!-- <div id="note">draughts/checkers with an AI running in the browser using Monte Carlo Tree Search to choose moves
+    </div> -->
+
+    <footer class="game-footer">
+      <a href="../../index.html" class="btn-home">HOME</a>
+    </footer>
+
+
+
+
+  </div>
+
+
+</body>
+
+<script type="text/javascript" src="./dama_script.js"></script>
+
+
+</html>
